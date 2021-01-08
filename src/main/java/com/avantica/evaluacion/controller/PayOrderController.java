@@ -5,10 +5,7 @@ import com.avantica.evaluacion.service.bean.PayOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import java.util.List;
 
 @Component
@@ -23,5 +20,14 @@ public class PayOrderController {
   public List<PayOrder> getPayOrders(@QueryParam("officeId") String officeId,
                                      @QueryParam("moneyType") String moneyType) {
     return payOrderService.getPayOrders(officeId, moneyType);
+  }
+
+  @POST
+  @Produces("application/json")
+  public PayOrder createPayOrder(@QueryParam("amount") String amount,
+                                 @QueryParam("moneyType") String moneyType,
+                                 @QueryParam("payDate") String payDate,
+                                 @QueryParam("officeId") String officeId) {
+    return payOrderService.createPayOrder(amount, moneyType, payDate, officeId);
   }
 }

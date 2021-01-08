@@ -11,4 +11,9 @@ public class PayOrderServiceImpl implements PayOrderService {
   public List<PayOrder> getPayOrders(String officeId, String moneyType) {
     return new ArrayList<>();
   }
+
+  @Override
+  public PayOrder createPayOrder(String amount, String moneyType, String payDate, String officeId) {
+    return new PayOrder();
+  }
 }
